@@ -1,39 +1,4 @@
-<?php 
-
-/*
-Exercicios - 01
-	RECEBA DUAS NOTAS DE PROVA
-	TIRE A MEDIA DELAS E EXIBA UMA MENSAGEM DE DESEMPENHO DE ACORDO COM A NOTA
-		DESEMPENHOS
-			PESSIMO
-			RUIM
-			MEDIO
-			BOM
-			EXCELENTE
-
-	UMA PÁGINA
-		FORM MANDANDO PRA SI MESMO POR POST
-			MATERIALIZE OU BOOTSTRAP
-				DOIS CAMPOS INPUTS TIPO TEXTO MAS ACEITANDO APENAS NUMEROS
-			BOTAO SUBMIT - TIRAR ENTER DE SUBMIT
-		PROCESSAR RECEBENDO AS NOTAS POR POST
-		TIRAR A MEDIA
-		APRESENTAR COM IF OU SWITCH OS DESEMPENHOS
-			CADA DESEMPENHO TEM MENSAGEM E ICONE
-		APRESENTAÇÃO
-			FORM SOME
-			NO LUGAR APARECE SOMENTE O DESEMPENHO COM ICONE E AS NOTAS RECEBIDAS
-			BOTÃO CALUCLAR NOVAMENTE
-			DESEMPENHO SOME
-
-			cores
-				#616161 grey darken 2
-				#fff9c4 yellow lighten-4
-				#ff5252 red accent-2
-				#4E9BCC
-				#4D8BB3
-*/
-?>
+<?php error_reporting(0); ?>
 <!--DOCTYPE html-->
 <html>
 <head lang="pt-br">
@@ -82,35 +47,31 @@ Exercicios - 01
    .input-field .prefix.active {
      color: #ff5252;
    }
+   .large.material-icons {
+   	cursor: pointer;
+   }
    </style>
 <div class="container">
-	<form action="" method="post" name="media">
+	<form action="desempenho.php" method="post" name="media">
 		<h4 class="center">Média</h4>
 		<div class="row">
 			<div class="input-field col s6">
 				<i class="material-icons prefix">filter_1</i>
-					<input type="text" id="nota01" name="nota01" class="money" placeholder="Digite o Valor da Primeira Nota">
+					<input type="text" id="nota01" name="nota01" class="money" required placeholder="Digite o Valor da Primeira Nota">
 				<label>Nota</label>
 			</div>
 			<div class="input-field col s6">
 				<i class="material-icons prefix">filter_2</i>
-					<input type="text" name="nota02" id="nota02" class="money" placeholder="Digite o Valor da Segunda Nota">
+					<input type="text" name="nota02" id="nota02" class="money" required placeholder="Digite o Valor da Segunda Nota">
 				<label>Nota</label>
 			</div>
 		</div>
 		<div class="center">
-			<button type="submit" onclick="return validar()" name="calcular" class="btn waves-effect waves-light red accent-2">Calcular</button>
+			<button type="submit" onclick="return validar()" name="calcular"  class="btn waves-effect waves-light red accent-2">Calcular</button>
 		</div>
 	</form>
 </div>
 
-<?php 
-	if (isset($_POST['calcular'])) {
-		$nota01 = $_POST['nota01'];
-		$nota02 = $_POST['nota02'];
-	}
-
-?>
 
 
 
@@ -121,6 +82,7 @@ Exercicios - 01
     <script type="text/javascript">
     	 $(document).ready(function(){
 		    $('.sidenav').sidenav();
+		    $('.tooltipped').tooltip();
 		   	$('.money').mask('00.00', {reverse: true});
 		  });
     	 function validar()
@@ -133,6 +95,11 @@ Exercicios - 01
     	 		return false;
     	 	}
     	 	if (nota02 < 0 || nota02 > 10) {
+    	 		M.toast({html: 'Campo deve conter uma nota válida entre 0 e 10'});
+    	 		media.nota02.focus();
+    	 		return false;
+    	 	}
+    	 	if (nota02 == "" || nota01 == "") {
     	 		M.toast({html: 'Campo deve conter uma nota válida entre 0 e 10'});
     	 		media.nota02.focus();
     	 		return false;
