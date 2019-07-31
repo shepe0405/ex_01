@@ -89,12 +89,12 @@ Exercicios - 01
 		<div class="row">
 			<div class="input-field col s6">
 				<i class="material-icons prefix">filter_1</i>
-					<input type="text" id="nota01" name="nota01" placeholder="Digite o Valor da Primeira Nota">
+					<input type="text" id="nota01" name="nota01" class="money" placeholder="Digite o Valor da Primeira Nota">
 				<label>Nota</label>
 			</div>
 			<div class="input-field col s6">
 				<i class="material-icons prefix">filter_2</i>
-					<input type="text" name="nota02" id="nota02" placeholder="Digite o Valor da Segunda Nota">
+					<input type="text" name="nota02" id="nota02" class="money" placeholder="Digite o Valor da Segunda Nota">
 				<label>Nota</label>
 			</div>
 		</div>
@@ -108,7 +108,6 @@ Exercicios - 01
 	if (isset($_POST['calcular'])) {
 		$nota01 = $_POST['nota01'];
 		$nota02 = $_POST['nota02'];
-		echo $nota01;
 	}
 
 ?>
@@ -117,10 +116,12 @@ Exercicios - 01
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="jquery.mask.js"></script>
 
     <script type="text/javascript">
     	 $(document).ready(function(){
 		    $('.sidenav').sidenav();
+		   	$('.money').mask('00.00', {reverse: true});
 		  });
     	 function validar()
     	 {
