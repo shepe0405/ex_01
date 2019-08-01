@@ -1,20 +1,5 @@
-<!--DOCTYPE html-->
-<html>
-<head lang="pt-br">
-	<title>Média</title>
-   <?php require_once "header.php"; ?>
-   <style type="text/css">
-   	nav {
-   		background-color: #4D8BB3;
-   	}
-   	body {
-   		color: #616161;
-   	}
-   .large.material-icons {
-   	cursor: pointer;
-   }
-   </style>
-<?php 
+<?php require_once "header.php";
+
 	if (isset($_POST['calcular'])) {
 		$nota01 = $_POST['nota01'];
 		$nota02 = $_POST['nota02'];
@@ -48,6 +33,7 @@
 		}
 	}
 ?>
+<main>
 	<div class="container" style="margin-top: 50px;">
 		<p class="center"><i class="large material-icons tooltipped" style="color: <?=$color?>;" data-position="bottom" data-tooltip="<?=$desempenho?>"><?=$icon?></i></p>
 		<p class="center" style="font-size: 16px; color: <?=$color?>;">Seu Desempenho Foi <?=$desempenho?></p>
@@ -55,6 +41,15 @@
 	<div class="row center">
 		<a href="ex_01.php" class="btn waves-effect waves-light red accent-2">Nova Média</a>
 	</div>
+</main>
+	<footer class="page-footer">
+	<div class="footer-copyright">
+		<div class="container white-text">
+			 © 2019 Copyright Text
+			<a href="ex_01.php" class="right">Média</a>
+		</div>
+	</div>
+</footer>
 	 <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script type="text/javascript">
